@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'mqtt'
 
-
+TOPIC = 'BABL'
 
 
 
@@ -31,27 +31,41 @@ end
 
 
 
-    def publish_message
+def publish_message(name , msg)
+
       # Publish example
       MQTT::Client.connect('10.177.33.144') do |c|
-        c.publish('test', 'message')
+        c.publish(TOPIC, "#{name}: #{msg}")
       end
-  end
+end
 
-    def subscribe_message
+  def subscribe_message
         # Subscribe example
         MQTT::Client.connect('10.177.33.144') do |c|
           # If you pass a block to the get method, then it will loop
-          c.get('test') do |topic,message|
+          c.get(TOPIC) do |topic,message|
             puts "#{topic}: #{message}"
           end
         end
-  end
+end
 
 
-
+def get_msg
+  puts 'Enter your message : '
+  @msg = gets
+end
 
 
 
   show_intro
-  Puts 'Enter your name'
+  puts 'Enter your name : '
+  @name = gets
+  get_msg
+
+
+
+
+while @msg != "q" do
+    publish_message(@name, @msg)
+    get_msg
+end
