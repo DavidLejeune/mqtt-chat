@@ -52,14 +52,14 @@ end
 
 def get_msg
   puts 'Enter your message : '
-  @msg = gets
+  @msg = gets.chomp
 end
 
 
 
   show_intro
   puts 'Enter your name : '
-  @name = gets
+  @name = gets.chomp  
   get_msg
 
 
