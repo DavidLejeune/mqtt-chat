@@ -57,10 +57,10 @@ end
 
 
 
-  show_intro
-  puts 'Enter your name : '
-  @name = gets.chomp
-  get_msg
+show_intro
+puts 'Enter your name : '
+@name = gets.chomp
+get_msg
 
 
 
