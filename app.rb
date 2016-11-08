@@ -39,7 +39,7 @@ def publish_message(name , msg)
       end
 end
 
-  def subscribe_message
+Thread.new do
         # Subscribe example
         MQTT::Client.connect('10.177.33.144') do |c|
           # If you pass a block to the get method, then it will loop
@@ -59,7 +59,7 @@ end
 
   show_intro
   puts 'Enter your name : '
-  @name = gets.chomp  
+  @name = gets.chomp
   get_msg
 
 
